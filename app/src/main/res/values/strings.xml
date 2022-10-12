@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">cardgame_wt</string>
+    <string name="lower">Lower</string>
+    <string name="higher">Higher</string>
+    <string name="score">Score :</string>
+    <string name="play">PLAY</string>
+    <string name="can_you_guess_the_card">Can you guess the card?</string>
+    <string name="pokertable">pokerTable</string>
+    <string name="card_back">card_back</string>
+    <string name="poker_table1">pokertable</string>
+    <string name="turn_card">Turn Card</string>
+    <string name="game_image">game_image</string>
+</resources>
