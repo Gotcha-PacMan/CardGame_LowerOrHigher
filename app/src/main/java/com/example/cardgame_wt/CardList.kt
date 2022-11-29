@@ -4,7 +4,10 @@ class CardList() {
     private val cardList = mutableListOf<Card>()
 
     init{
-        deckOfCards()
+
+        mini()
+    //  deckOfCards()
+
     }
 
     private fun deckOfCards() {
@@ -65,13 +68,32 @@ class CardList() {
         shuffle()
     }
 
+    private fun mini(){
+
+        cardList.add(Card(1, R.drawable.card1))
+        cardList.add(Card(2, R.drawable.card49))
+        cardList.add(Card(3, R.drawable.card45))
+        cardList.add(Card(4, R.drawable.card41))
+        cardList.add(Card(5, R.drawable.card37))
+        cardList.add(Card(6, R.drawable.card33))
+        cardList.add(Card(7, R.drawable.card29))
+        cardList.add(Card(8, R.drawable.card25))
+        cardList.add(Card(9, R.drawable.card21))
+        cardList.add(Card(10, R.drawable.card17))
+
+        shuffle()
+
+    }
+
     private fun shuffle() {
         cardList.shuffle()
     }
 
     fun getNewCard(): Card {
+
         if (cardList.size == 0) {
-            deckOfCards()
+           // deckOfCards()
+            mini()
         }
 
         return cardList.removeAt(cardList.size - 1)

@@ -1,8 +1,6 @@
 package com.example.cardgame_wt
 
-import android.annotation.SuppressLint
-/* import android.content.Intent */
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 import android.view.View
 import android.view.View.INVISIBLE
@@ -10,9 +8,9 @@ import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import kotlin.random.Random
+import androidx.appcompat.app.AppCompatActivity
 
-abstract class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var cardBackImageView: ImageView
 
@@ -22,21 +20,12 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var lowerButton: Button
     lateinit var higherButton: Button
 
-    lateinit var random: Random
-
-   /* val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this CardList)
-    val oldCard = sharedPreferences.getString("signature", "")
-    */
-
     var score = 0
     private val cardList = CardList()
 
-    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        random = Random
 
         cardBackImageView = findViewById(R.id.cardBackImageView)
         cardBackImageView.setImageResource(R.drawable.card_back)
@@ -61,45 +50,65 @@ abstract class MainActivity : AppCompatActivity() {
         lowerButton = findViewById(R.id.lowerButton)
         lowerButton.setOnClickListener() {
 
-            // generates new card after button have been pressed.
+            val oldCard = cardList.getNewCard()
+            cardBackImageView.setImageResource(oldCard.image)
+
             val card = cardList.getNewCard()
-            cardBackImageView.setImageResource(card.image)
 
             // compare the old card with the new one, for correct answer get 1 point.
-          /*  if (card < oldCard){
+            if (card.value < oldCard.value){
                 score++
                 scoreTextView.text = "Score: $score"
-                var card = cardList.getNewCard()
+                cardList.getNewCard()
             }
-            // if the answer is wrong print score and GameOver! but also restart the process.
+            // if the answer is wrong print score and GameOver!
             else {
-                scoreTextView.text = "Score:" + score + "GameOver!"
+                scoreTextView.text = "Score:" + score + "GameOver!!"
                 turnButton.visibility = View.VISIBLE
                 lowerButton.visibility = View.INVISIBLE
                 higherButton.visibility = View.INVISIBLE
             }
-           */
+
         }
 
             higherButton = findViewById(R.id.higherButton)
             higherButton.setOnClickListener() {
-                // generates new card after button have been pressed.
-                val card = cardList.getNewCard()
-                cardBackImageView.setImageResource(card.image)
 
-                // compare the old card with the new one, for correct answer get 1 point.
-                /* if (card >){
+                val oldCard = cardList.getNewCard()
+                cardBackImageView.setImageResource(oldCard.image)
+
+                val card = cardList.getNewCard()
+
+                if (card.value > oldCard.value){
+                    score++
+                    scoreTextView.text = "Score: $score"
+                    cardList.getNewCard()
+                }
+                // if the answer is wrong print score and GameOver!
+                else {
+                    scoreTextView.text = "Score:" + score + "GameOver!!"
+                    turnButton.visibility = View.VISIBLE
+                    lowerButton.visibility = View.INVISIBLE
+                    higherButton.visibility = View.INVISIBLE
+                }
+
+
+               /* // compare the old card with the new one, for correct answer get 1 point.
+                if (card.value > number){
                      score++
                      scoreTextView.text = "Score: $score"
                      var card = cardList.getNewCard()
                  }
-                 // if the answer is wrong print score and GameOver! but also restart the process.
+                 // if the answer is wrong print score and GameOver!
                  else {
                      scoreTextView.text = "Score:" + score + "GameOver!"
                      turnButton.visibility = View.VISIBLE
                      lowerButton.visibility = View.INVISIBLE
                      higherButton.visibility = View.INVISIBLE
-                 } */
+                 }
+                */
+
+
             }
 
             turnButton.visibility = View.VISIBLE

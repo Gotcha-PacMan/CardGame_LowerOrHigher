@@ -80,7 +80,7 @@
         android:id="@+id/turnButton"
         android:layout_width="120dp"
         android:layout_height="60dp"
-        android:text="@string/turn_card"
+        android:text="Proceed"
         app:layout_constraintBottom_toTopOf="@+id/cardBackImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
